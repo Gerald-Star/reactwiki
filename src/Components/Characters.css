@@ -1,0 +1,25 @@
+
+/* using flex box*/
+.characters_card {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  
+}
+.character-img {
+  border: 2px solid #9C0F48;
+  margin: 10px;
+  max-width: 250px;
+margin-top: 40px;
+}
+
+img {
+  border-radius: 10px;
+  border: 10px solid transparent;
+}
+
+.character-set {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
