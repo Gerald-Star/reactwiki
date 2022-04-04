@@ -1,5 +1,7 @@
 import React, { useEffect, useState} from "react";
 import Character from './Character'
+import SearchBar from "./SearchBar";
+import "./Characters.css";
 
 
 
@@ -8,7 +10,8 @@ import Character from './Character'
 
 function Characters() {
     const [characters, setCharacters] = useState([]);
-    const [result, setResult] = useState(null);
+    const [input, setInput] = useState('');
+    //const [result, setResult] = useState(null);
     	const [loading, setLoading] = useState(true)
     
     const fetchData = () => {
@@ -37,13 +40,20 @@ function Characters() {
         fetchData()
     }, []);
 
+    const getInput = (event) => {
+        console.log("onchange works", event.target.value);
+        setInput(event.target.value)
+}
 
-
+    const result = characters.filter(val =>
+        val.name.toLowerCase().includes(input.toLowerCase())
+    )
+    console.log(result)
 
 
     return (
-         <div className="character_card">
-            
+         <div className="character-card">
+            <SearchBar getInput={getInput} />
             {/* {
                 characters ? (characters.map(character => {
                     return

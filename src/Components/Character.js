@@ -1,23 +1,30 @@
-import React from 'react'
+import React, {useState} from 'react'
+import Mode from './Mode';
+
 
 
 function Character(props) {
 
     
     console.log(props);
+
+    const [openMode, setOpenMode] = useState(false);
     
     return (
-        <div className="character-set">
-            <img src={props.character.image} alt="" />
-            <h3>{props.character.name}</h3>
-            <h4>{props.character.status}</h4>
-            <p>{props.character.species}</p>
-            
-            <button type="button" className="btn btn-primary">Learn More</button>
-        </div>
-    )    
-        
-    
-}
+        <div className="character">
+             
+            <img className="character-img" src={props.character.image} alt="" />
+            <div>
 
-export default Character
+                <button className="myBtn" onClick={() => { setOpenMode(true) }} >Learn More</button>
+                {openMode && <Mode onClose={() => setOpenMode(false)} openMode={openMode}
+                    status={props.character.status}
+                    species={props.character.species}
+                    name={props.character.name}
+                />}
+            </div>
+
+        </div>
+    )
+}
+ export default Character
